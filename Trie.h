@@ -11,12 +11,16 @@ class Trie
 {
 private:
 public:
+    /* Constructors */
+
     /// @brief Creates an empty trie.
     Trie();
 
     /// @brief Constructor: Creates a deep copy of the given trie.
     /// @param other A reference to the other trie to be copied.
     Trie(const Trie &other);
+
+    /* Methods */
 
     /// @brief Inserts a new word into the tree.  Duplicate words are not
     /// allowed.  This function should return true if the word is successfully
@@ -55,6 +59,8 @@ public:
     /// @param partialWord A string of the partial word to be searched for.
     /// @return A vector of strings containing all the words found.
     vector<string> complete(string partialWord);
+
+    /* Overrides */
 
     /// @brief Removes all the contents of this trie (without memory leaks)
     /// and make a deep copy of the other trie into this trie.
