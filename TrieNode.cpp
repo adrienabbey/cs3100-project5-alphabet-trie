@@ -24,3 +24,46 @@ TrieNode *TrieNode::findChild(const char &character)
     // Return the pointer to the given child, if it exists:
     return returnPointer;
 }
+
+bool TrieNode::hasTerminator()
+{
+    // If a terminator node does not exist:
+    if (pointerArray[0] == nullptr)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+
+bool TrieNode::setTerminator(bool b)
+{
+    // If we're setting a terminator node and one does not already exist:
+    if (b == true && pointerArray[0] == nullptr)
+    {
+        // Create a new terminator node:
+        pointerArray[0] = new TrieNode();
+
+        // Since we made changes, return true:
+        return true;
+    }
+    // If we're removing a terminator node and one already exists:
+    else if (b == false && pointerArray[0] != nullptr)
+    {
+        // Delete the terminator node (to avoid memory leaks):
+        delete pointerArray[0];
+
+        // Set the terminator index to null:
+        pointerArray[0] = nullptr;
+
+        // Since we made changes, return true:
+        return true;
+    }
+    // Otherwise, we make no changes and return false:
+    else
+    {
+        return false;
+    }
+}
