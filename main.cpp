@@ -8,6 +8,11 @@ using namespace std;
 
 int main()
 {
+    // Char test:
+    char testChar = 'a';
+    int charInt = testChar - 'a' + 1;
+    cout << "Character " << testChar << "'s int value is: " << charInt << endl;
+
     // Load the appropriate dictionary into a trie:
     // NOTE: See OneNote!
 
