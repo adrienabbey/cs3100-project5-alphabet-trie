@@ -8,5 +8,8 @@ using namespace std;
 
 int main()
 {
+    // Load the appropriate dictionary into a trie:
+    // NOTE: See OneNote!
+
     return 0;
 }
