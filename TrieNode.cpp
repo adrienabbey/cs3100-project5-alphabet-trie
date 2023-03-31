@@ -12,9 +12,9 @@ using namespace std;
 TrieNode::TrieNode()
 {
     // When creating a new node, fill the pointer array with nulls:
-    for (TrieNode *p : pointerArray)
+    for (int i = 0; i < 27; i++)
     {
-        p = nullptr;
+        pointerArray[i] = nullptr;
     }
 }
 
