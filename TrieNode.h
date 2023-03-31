@@ -26,8 +26,22 @@ public:
 
     /* Methods */
 
-    /// @brief Checks to see if a child node exists for the given character, returning a reference to that node if it exists.
+    /// @brief Checks to see if a child node exists for the given character,
+    /// returning a reference to that node if it exists.
     /// @param character The character to search for.
-    /// @return Returns a reference to a Trie Node if one exists for the given character.
+    /// @return Returns a reference to a Trie Node if one exists for the given
+    /// character.
     TrieNode *findChild(const char &character);
+
+    /// @brief Checks to see if the trie node has a terminating node.
+    /// @return Returns 'true' if a terminating node exists, 'false' if not.
+    bool hasTerminator();
+
+    /// @brief Allows the creation of a terminator node (for this node), or
+    /// removes the terminator node if it already exists.
+    /// @param b If 'true' and no terminator node exists, it creates one.  If
+    /// 'false' and a terminator node exists, it deletes it.
+    /// @return Returns true if a change to the terminator node occurred,
+    /// 'false' if no change was made.
+    bool setTerminator(bool b);
 };
