@@ -11,7 +11,8 @@ using namespace std;
 
 Trie::Trie()
 {
-    // test
+    // An empty trie has no root node:
+    root = nullptr;
 }
 
 Trie::Trie(const Trie &other)
