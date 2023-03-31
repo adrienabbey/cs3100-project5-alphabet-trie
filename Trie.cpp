@@ -11,8 +11,8 @@ using namespace std;
 
 Trie::Trie()
 {
-    // An empty trie has no root node:
-    root = nullptr;
+    // An empty trie has a single root node:
+    root = new TrieNode();
 }
 
 Trie::Trie(const Trie &other)
@@ -36,17 +36,25 @@ bool Trie::insert(string word)
         if (childNode == nullptr)
         {
             // Add a new child node for that character:
-            childNode = new TrieNode();
+            currentNode->newChild(c);
         }
 
         // Move to the child node of the character:
-        currentNode = childNode;
+        currentNode = currentNode->findChild(c);
     }
 
     // If there is no terminating node:
-    // Add a new terminating node:
-    // Since we added a new terminating node, the insert was successful, return true:
+    if (!currentNode->hasTerminator())
+    {
+        // Add a new terminating node:
+        currentNode->setTerminator(true);
+
+        // Since we added a new terminating node, the insert was successful, return true:
+        return true;
+    }
+
     // If we did not insert a terminating node, the insert was NOT successful; return false:
+    return false;
 }
 
 int Trie::count()
