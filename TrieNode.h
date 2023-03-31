@@ -44,4 +44,13 @@ public:
     /// @return Returns true if a change to the terminator node occurred,
     /// 'false' if no change was made.
     bool setTerminator(bool b);
+
+    /// @brief Creates a new child node for the given character, if possible.
+    /// If a child node for the given character already exists, it will fail
+    /// to create a new node and return 'false'.
+    /// @param character A character representing the index for which a node
+    /// should be created.
+    /// @return Returns 'true' if a new node was created and inserted, and '
+    /// false' if a node already exists and no node was created.
+    bool newChild(const char &character);
 };
