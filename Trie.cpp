@@ -23,6 +23,21 @@ Trie::Trie(const Trie &other)
 
 bool Trie::insert(string word)
 {
+    // Start at the root node:
+    TrieNode *currentNode = root;
+
+    // For each character in the word:
+    for (char &c : word)
+    {
+        // If the character is not a child:
+        // Add a new child node for that character:
+        // Otherwise, move to the child node of the character:
+    }
+
+    // If there is no terminating node:
+    // Add a new terminating node:
+    // Since we added a new terminating node, the insert was successful, return true:
+    // If we did not insert a terminating node, the insert was NOT successful; return false:
 }
 
 int Trie::count()
