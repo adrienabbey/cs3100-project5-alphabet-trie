@@ -6,12 +6,16 @@
 
 #include <string>
 #include <vector>
+#include "TrieNode.h"
 
 using namespace std;
 
 class Trie
 {
 private:
+    /* Fields */
+    TrieNode *root;
+
 public:
     /* Constructors */
 
