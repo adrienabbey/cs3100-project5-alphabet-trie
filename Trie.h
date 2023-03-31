@@ -2,6 +2,8 @@
 // Project #5: Autocomplete with an Alphabet Trie
 // VS Code, Ubuntu 22.04, g++/gdb
 
+#pragma once
+
 #include <string>
 #include <vector>
 
