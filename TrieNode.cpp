@@ -12,3 +12,15 @@ using namespace std;
 TrieNode::TrieNode()
 {
 }
+
+TrieNode *TrieNode::findChild(const char &character)
+{
+    // Convert the given character to an index value:
+    int charIndex = character - 'a' + 1;
+
+    // Check to see if the given index value has any pointers:
+    TrieNode *returnPointer = pointerArray[charIndex];
+
+    // Return the pointer to the given child, if it exists:
+    return returnPointer;
+}
