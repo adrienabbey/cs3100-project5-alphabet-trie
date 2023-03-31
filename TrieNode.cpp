@@ -11,6 +11,11 @@ using namespace std;
 
 TrieNode::TrieNode()
 {
+    // When creating a new node, fill the pointer array with nulls:
+    for (TrieNode *p : pointerArray)
+    {
+        p = nullptr;
+    }
 }
 
 TrieNode *TrieNode::findChild(const char &character)
@@ -64,6 +69,27 @@ bool TrieNode::setTerminator(bool b)
     // Otherwise, we make no changes and return false:
     else
     {
+        return false;
+    }
+}
+
+bool TrieNode::newChild(const char &character)
+{
+    // If a node does not already exist for the given character:
+    if (findChild(character) == nullptr)
+    {
+        // Determine which index should be changed:
+        int charIndex = character - 'a' + 1;
+
+        // Then create a new node:
+        pointerArray[charIndex] = new TrieNode();
+
+        // New node created and added, return true:
+        return true;
+    }
+    else
+    {
+        // A node already exists, do not create a new node, return false:
         return false;
     }
 }
