@@ -29,9 +29,18 @@ bool Trie::insert(string word)
     // For each character in the word:
     for (char &c : word)
     {
-        // If the character is not a child:
-        // Add a new child node for that character:
-        // Otherwise, move to the child node of the character:
+        // Find the child node for the given character, if any:
+        TrieNode *childNode = currentNode->findChild(c);
+
+        // If the character node does not exist:
+        if (childNode == nullptr)
+        {
+            // Add a new child node for that character:
+            childNode = new TrieNode();
+        }
+
+        // Move to the child node of the character:
+        currentNode = childNode;
     }
 
     // If there is no terminating node:
