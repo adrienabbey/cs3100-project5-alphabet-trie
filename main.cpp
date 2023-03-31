@@ -11,25 +11,82 @@
  */
 
 #include <iostream>
+#include <vector>
+#include <fstream> // Enables file reading
+#include <string>
 #include "Trie.h"
 
 using namespace std;
 
+/* Method Declarations */
+
+vector<string> loadDictionary(string fileName);
+
 int main()
 {
     // Char test:
-    char testChar = 'a';
-    int charInt = testChar - 'a' + 1;
-    cout << "Character " << testChar << "'s int value is: " << charInt << endl;
+    // char testChar = 'a';
+    // int charInt = testChar - 'a' + 1;
+    // cout << "Character " << testChar << "'s int value is: " << charInt << endl;
 
     // Create an empty trie:
-    Trie *testTrie = new Trie();
+    // Trie *testTrie = new Trie();
 
     // Insert test:
-    testTrie->insert("hello");
+    // testTrie->insert("hello");
 
     // Load the appropriate dictionary into a trie:
-    // NOTE: See OneNote!
+    vector<string> dictionary = loadDictionary("wordlist_linux.txt");
+
+    // Create a new trie:
+    Trie *alphaTrie = new Trie();
+
+    // For every word in the dictionary:
+    for (string word : dictionary)
+    {
+        // Insert the word into the trie:
+        alphaTrie->insert(word);
+    }
 
     return 0;
+}
+
+/// @brief Loads words from the given file, adding them to a string vector,
+/// then returns that string vector.
+/// @param fileName A string containing the file name to load words from.
+/// @return Returns a string vector containing each word loaded from the
+/// provided file.
+vector<string> loadDictionary(string fileName)
+{
+    // Create a ifstream pointing to the dictionary:
+    ifstream dictFile(fileName);
+
+    // Create a string vector of words:
+    vector<string> wordList;
+
+    // If the file loaded correctly:
+    if (dictFile.good())
+    {
+        // Create a string to hold a new word:
+        string newWord;
+
+        // While there are words to load from the dictionary:
+        while (!dictFile.eof())
+        {
+            // Pipe the next word into the string:
+            dictFile >> newWord;
+
+            // Push the new word onto the string vector:
+            wordList.push_back(newWord);
+        }
+    }
+    // Otherwise, if the dictionary file failed to load:
+    else
+    {
+        // Print an error message:
+        cerr << "Failed to load the dictionary file!" << endl;
+    }
+
+    // Return the string vector:
+    return wordList;
 }
