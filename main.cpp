@@ -57,6 +57,19 @@ int main()
          << "Find ca returns: " << alphaTrie->find("ca") << endl
          << "Find foobar returns: " << alphaTrie->find("foobar") << endl;
 
+    // Test the complete function:
+    vector<string> findCatVector = alphaTrie->complete("cat");
+    for (string s : findCatVector)
+    {
+        cout << s << ", ";
+    }
+
+    // Test the completeCount function:
+    cout << endl
+         << endl
+         << "Number of words starting with cat: " << alphaTrie->completeCount("cat") << endl;
+
+    cout << endl;
     return 0;
 }
 
