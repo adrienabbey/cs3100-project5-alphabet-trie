@@ -53,4 +53,12 @@ public:
     /// @return Returns 'true' if a new node was created and inserted, and '
     /// false' if a node already exists and no node was created.
     bool newChild(const char &character);
+
+    /// @brief Searches children nodes for complete words, starting at the
+    /// specified node with a partial word (if any), pushing those words to
+    /// the specified string vector.
+    /// @param partialWord A string to prepend to every word found in the trie.
+    /// @param stringVector A reference to an existing string vector, to which
+    /// any found words will be pushed to.
+    void completeHelper(string partialWord, vector<string> &stringVector);
 };
