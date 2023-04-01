@@ -46,7 +46,14 @@ public:
     /// @return Number of nodes in the trie.
     int getSize();
 
-    /// @brief If the given word is found in the trie, thsi function should
+    /// @brief A helper function that searches the trie for the given word
+    /// (ignoring terminators), returning a pointer to the final node, if any.
+    /// @param word The word (complete or incomplete) to be searched for.
+    /// @return Returns a pointer to the final node of the given word, if
+    /// any.  If no match is found, it will return a nullptr instead.
+    TrieNode *findHelper(string word);
+
+    /// @brief If the given word is found in the trie, this function should
     /// return true.  Otherwise, this function should return false.
     /// @param word A string of the word to search for.
     /// @return True if the word is found, false if not.
