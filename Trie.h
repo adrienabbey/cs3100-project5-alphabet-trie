@@ -15,6 +15,8 @@ class Trie
 private:
     /* Fields */
     TrieNode *root;
+    long nodeCount;
+    int wordCount;
 
 public:
     /* Constructors */
