@@ -30,7 +30,7 @@ public:
     /// returning a reference to that node if it exists.
     /// @param character The character to search for.
     /// @return Returns a reference to a Trie Node if one exists for the given
-    /// character.
+    /// character, or returns nullptr if none exists.
     TrieNode *findChild(const char &character);
 
     /// @brief Checks to see if the trie node has a terminating node.
