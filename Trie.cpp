@@ -130,17 +130,35 @@ bool Trie::find(string word)
     return false;
 }
 
-int Trie::completeCount(string partialWord)
-{
-    // Track how many words are found:
-    int count = 0;
-
-    // Search for words starting with the given string:
-    TrieNode *partialNode = findHelper(partialWord);
-}
-
 vector<string> Trie::complete(string partialWord)
 {
+    // Create a string vector to return:
+    vector<string> stringVector;
+
+    // Find the node for the given partial word, if any:
+    TrieNode *partialNode = findHelper(partialWord);
+
+    // If a node was found:
+    if (partialNode != nullptr)
+    {
+        // Then start searching for complete words:
+        partialNode->completeHelper(partialWord, stringVector);
+    }
+
+    // Return the string vector:
+    return stringVector;
+}
+
+int Trie::completeCount(string partialWord)
+{
+    // Use the complete function to find all instances of the given word:
+    vector<string> stringVector = complete(partialWord);
+
+    // Count the number of words in the string vector:
+    int count = stringVector.size();
+
+    // Return the count:
+    return count;
 }
 
 /* Overrides */
