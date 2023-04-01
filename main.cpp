@@ -48,6 +48,10 @@ int main()
         alphaTrie->insert(word);
     }
 
+    // Test word and node counters:
+    cout << "Word count: " << alphaTrie->count() << endl
+         << "Node Count: " << alphaTrie->getSize() << endl;
+
     return 0;
 }
 
