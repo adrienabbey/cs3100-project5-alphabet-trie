@@ -54,6 +54,7 @@ int main()
 
     // Test the find function:
     cout << "Find cat returns: " << alphaTrie->find("cat") << endl
+         << "Find ca returns: " << alphaTrie->find("ca") << endl
          << "Find foobar returns: " << alphaTrie->find("foobar") << endl;
 
     return 0;
