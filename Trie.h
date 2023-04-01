@@ -59,14 +59,6 @@ public:
     /// @return True if the word is found, false if not.
     bool find(string word);
 
-    /// @brief Returns the number of words in the dictionary that begin with
-    /// the given input string.  If not matching words are found, the function
-    /// should return zero.
-    /// @param partialWord A string of the first part of a partial word to
-    /// search for.
-    /// @return Number of words that start with the given string.
-    int completeCount(string partialWord);
-
     /// @brief Returns a vector of strings containing all the words of the
     /// dictionary that with the given input string.  For each word found in
     // the trie, there will be one value in the vector.  If no matching words
@@ -74,6 +66,14 @@ public:
     /// @param partialWord A string of the partial word to be searched for.
     /// @return A vector of strings containing all the words found.
     vector<string> complete(string partialWord);
+
+    /// @brief Returns the number of words in the dictionary that begin with
+    /// the given input string.  If not matching words are found, the function
+    /// should return zero.
+    /// @param partialWord A string of the first part of a partial word to
+    /// search for.
+    /// @return Number of words that start with the given string.
+    int completeCount(string partialWord);
 
     /* Overrides */
 
