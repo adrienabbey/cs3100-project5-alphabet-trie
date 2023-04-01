@@ -84,6 +84,34 @@ int Trie::getSize()
 
 bool Trie::find(string word)
 {
+    // Start at the root node:
+    TrieNode *currentNode = root;
+
+    // For each character in the word:
+    for (char c : word)
+    {
+        // If that character does not exist:
+        if (currentNode->findChild(c) == nullptr)
+        {
+            // Return false:
+            return false;
+        }
+        else
+        {
+            // Otherwise, move to the next character:
+            currentNode = currentNode->findChild(c);
+        }
+    }
+
+    // If the current node has a terminating character:
+    if (currentNode->hasTerminator())
+    {
+        // Return true:
+        return true;
+    }
+
+    // Otherwise, return false:
+    return false;
 }
 
 int Trie::completeCount(string partialWord)
