@@ -82,7 +82,7 @@ int Trie::getSize()
     return nodeCount;
 }
 
-bool Trie::find(string word)
+TrieNode *Trie::findHelper(string word)
 {
     // Start at the root node:
     TrieNode *currentNode = root;
@@ -93,14 +93,30 @@ bool Trie::find(string word)
         // If that character does not exist:
         if (currentNode->findChild(c) == nullptr)
         {
-            // Return false:
-            return false;
+            // Return a nullptr:
+            currentNode = nullptr;
+            return currentNode;
         }
         else
         {
             // Otherwise, move to the next character:
             currentNode = currentNode->findChild(c);
         }
+    }
+
+    // We found the given word, return a reference to it:
+    return currentNode;
+}
+
+bool Trie::find(string word)
+{
+    // Start at the root node:
+    TrieNode *currentNode = findHelper(word);
+
+    // If the returned node is nullptr, return false:
+    if (currentNode == nullptr)
+    {
+        return false;
     }
 
     // If the current node has a terminating character:
@@ -116,6 +132,11 @@ bool Trie::find(string word)
 
 int Trie::completeCount(string partialWord)
 {
+    // Track how many words are found:
+    int count = 0;
+
+    // Search for words starting with the given string:
+    TrieNode *partialNode = findHelper(partialWord);
 }
 
 vector<string> Trie::complete(string partialWord)
