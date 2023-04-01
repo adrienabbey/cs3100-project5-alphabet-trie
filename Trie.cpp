@@ -13,6 +13,12 @@ Trie::Trie()
 {
     // An empty trie has a single root node:
     root = new TrieNode();
+
+    // Tries starts with a single root node, so the initial node count is zero:
+    nodeCount = 1;
+
+    // An empty trie starts with zero words:
+    wordCount = 0;
 }
 
 Trie::Trie(const Trie &other)
@@ -37,6 +43,9 @@ bool Trie::insert(string word)
         {
             // Add a new child node for that character:
             currentNode->newChild(c);
+
+            // Increment the node counter:
+            nodeCount++;
         }
 
         // Move to the child node of the character:
@@ -49,6 +58,12 @@ bool Trie::insert(string word)
         // Add a new terminating node:
         currentNode->setTerminator(true);
 
+        // Increment the node count:
+        nodeCount++;
+
+        // Increment the trie's word count:
+        wordCount++;
+
         // Since we added a new terminating node, the insert was successful, return true:
         return true;
     }
@@ -59,10 +74,12 @@ bool Trie::insert(string word)
 
 int Trie::count()
 {
+    return wordCount;
 }
 
 int Trie::getSize()
 {
+    return nodeCount;
 }
 
 bool Trie::find(string word)
