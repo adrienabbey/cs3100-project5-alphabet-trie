@@ -52,6 +52,10 @@ int main()
     cout << "Word count: " << alphaTrie->count() << endl
          << "Node Count: " << alphaTrie->getSize() << endl;
 
+    // Test the find function:
+    cout << "Find cat returns: " << alphaTrie->find("cat") << endl
+         << "Find foobar returns: " << alphaTrie->find("foobar") << endl;
+
     return 0;
 }
 
