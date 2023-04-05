@@ -35,6 +35,9 @@ int main()
     // Insert test:
     // testTrie->insert("hello");
 
+    // Create an empty trie:
+    Trie *emptyTrie = new Trie();
+
     // Load the appropriate dictionary into a trie:
     vector<string> dictionary = loadDictionary("wordlist_linux.txt");
 
