@@ -19,6 +19,23 @@ TrieNode::TrieNode()
     }
 }
 
+TrieNode::~TrieNode()
+{
+    // For each child node:
+    for (int i = 0; i < 27; i++)
+    {
+        // If the node exists:
+        if (pointerArray[i] != nullptr)
+        {
+            // Delete the node:
+            delete pointerArray[i];
+
+            // Set the pointer to null:
+            pointerArray[i] = nullptr;
+        }
+    }
+}
+
 TrieNode *TrieNode::findChild(const char &character)
 {
     // Convert the given character to an index value:

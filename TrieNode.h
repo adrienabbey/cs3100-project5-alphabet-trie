@@ -19,10 +19,13 @@ private:
     TrieNode *pointerArray[27];
 
 public:
-    /* Constructors */
+    /* Constructors and Deconstructors*/
 
     /// @brief Creates an empty trie node.
     TrieNode();
+
+    /// @brief Deletes the given node and all its child nodes.
+    ~TrieNode();
 
     /* Methods */
 
