@@ -123,3 +123,25 @@ void TrieNode::completeHelper(string partialWord, vector<string> &stringVector)
         }
     }
 }
+
+TrieNode *TrieNode::copyHelper(const TrieNode *originalNode)
+{
+    // NOTE: Never assume that 'this' node exists!
+
+    // Create a new TrieNode to return:
+    TrieNode *copyNode = new TrieNode();
+
+    // For each child node of the original node:
+    for (int i = 0; i < 27; i++)
+    {
+        // If a child node exists:
+        if (originalNode->pointerArray[i] != nullptr)
+        {
+            // Recursively create a deep copy of the child:
+            copyNode->pointerArray[i] = copyHelper(originalNode->pointerArray[i]);
+        }
+    }
+
+    // Return the new deep copy:
+    return copyNode;
+}

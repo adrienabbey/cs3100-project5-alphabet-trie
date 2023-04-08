@@ -61,4 +61,12 @@ public:
     /// @param stringVector A reference to an existing string vector, to which
     /// any found words will be pushed to.
     void completeHelper(string partialWord, vector<string> &stringVector);
+
+    /// @brief Recursive helper function to create deep copies of the given
+    /// node, including all child nodes.
+    /// @param originalNode A pointer to the original TrieNode to be deep
+    /// copied, including all of its child nodes.
+    /// @return Returns a pointer to the new deep copy of the original
+    /// TrieNode.
+    TrieNode *copyHelper(const TrieNode *originalNode);
 };
