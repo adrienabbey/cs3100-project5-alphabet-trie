@@ -72,6 +72,9 @@ int main()
          << endl
          << "Number of words starting with cat: " << alphaTrie->completeCount("cat") << endl;
 
+    // Test the copy constructor:
+    Trie *copyConstructorTrie = new Trie(*alphaTrie);
+
     cout << endl;
     return 0;
 }
