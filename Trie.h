@@ -42,7 +42,7 @@ public:
     /// @return Number of items in the trie.
     int count();
 
-    /// @brief Returns the total nujmber of nodes in the trie.
+    /// @brief Returns the total number of nodes in the trie.
     /// @return Number of nodes in the trie.
     int getSize();
 
