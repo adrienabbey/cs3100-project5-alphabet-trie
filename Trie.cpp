@@ -21,6 +21,19 @@ Trie::Trie()
     wordCount = 0;
 }
 
+Trie::~Trie()
+{
+    // Recursively delete all the nodes in this tree, starting with the root node:
+    delete root;
+
+    // Set root to null:
+    root = nullptr;
+
+    // Zero the counters:
+    nodeCount = 0;
+    wordCount = 0;
+}
+
 Trie::Trie(const Trie &other)
 {
     // Recursively create a deep copy of the original's root node:
@@ -171,4 +184,5 @@ int Trie::completeCount(string partialWord)
 
 Trie &Trie::operator=(const Trie &other)
 {
+    // Clean this trie, deleting all the nodes recursively:
 }

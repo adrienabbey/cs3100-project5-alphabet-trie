@@ -24,6 +24,9 @@ public:
     /// @brief Creates an empty trie.
     Trie();
 
+    /// @brief Deconstructor, deletes all the nodes in the current trie.
+    ~Trie();
+
     /// @brief Constructor: Creates a deep copy of the given trie.
     /// @param other A reference to the other trie to be copied.
     Trie(const Trie &other);
