@@ -75,6 +75,15 @@ int main()
     // Test the copy constructor:
     Trie *copyConstructorTrie = new Trie(*alphaTrie);
 
+    // Pause:
+    getchar();
+
+    // Test the TrieNode deconstructor:
+    delete alphaTrie;
+
+    // Pause:
+    getchar();
+
     cout << endl;
     return 0;
 }
