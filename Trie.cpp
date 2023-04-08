@@ -23,6 +23,12 @@ Trie::Trie()
 
 Trie::Trie(const Trie &other)
 {
+    // Recursively create a deep copy of the original's root node:
+    root = root->copyHelper(other.root);
+
+    // Copy the word and node counters:
+    nodeCount = other.nodeCount;
+    wordCount = other.wordCount;
 }
 
 /* Methods */
