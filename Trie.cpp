@@ -185,4 +185,12 @@ int Trie::completeCount(string partialWord)
 Trie &Trie::operator=(const Trie &other)
 {
     // Clean this trie, deleting all the nodes recursively:
+    delete root;
+
+    // Create a deep copy of the original root node, recursively adding deep copies of children:
+    root = root->copyHelper(other.root);
+
+    // Copy the node and word counts:
+    wordCount = other.wordCount;
+    nodeCount = other.nodeCount;
 }

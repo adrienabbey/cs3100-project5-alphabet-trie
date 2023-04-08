@@ -51,6 +51,9 @@ int main()
         alphaTrie->insert(word);
     }
 
+    // Test duplicate word insertion:
+    cout << "Duplicate insertion returns: " << alphaTrie->insert("cat") << endl;
+
     // Test word and node counters:
     cout << "Word count: " << alphaTrie->count() << endl
          << "Node Count: " << alphaTrie->getSize() << endl;
@@ -75,14 +78,14 @@ int main()
     // Test the copy constructor:
     Trie *copyConstructorTrie = new Trie(*alphaTrie);
 
-    // Pause:
-    getchar();
-
     // Test the TrieNode deconstructor:
     delete alphaTrie;
 
-    // Pause:
-    getchar();
+    // Test the =operator overload:
+    emptyTrie = copyConstructorTrie;
+
+    // Test the find function on the now-full emptyTrie:
+    cout << "Number of words starting with dog: " << emptyTrie->completeCount("dog") << endl;
 
     cout << endl;
     return 0;
