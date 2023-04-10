@@ -14,6 +14,7 @@
 #include <vector>
 #include <fstream> // Enables file reading
 #include <string>
+#include <iomanip> // Enable empty input
 #include "Trie.h"
 
 using namespace std;
@@ -21,6 +22,7 @@ using namespace std;
 /* Method Declarations */
 
 vector<string> loadDictionary(string fileName);
+bool inputSequence(Trie *dictionaryTrie);
 
 int main()
 {
@@ -85,9 +87,17 @@ int main()
     emptyTrie = copyConstructorTrie;
 
     // Test the find function on the now-full emptyTrie:
-    cout << "Number of words starting with dog: " << emptyTrie->completeCount("dog") << endl;
+    cout << "Number of words starting with dog: " << emptyTrie->completeCount("dog") << endl
+         << endl;
 
-    cout << endl;
+    // Loop the user input sequence:
+    bool keepLooping = true;
+
+    while (keepLooping)
+    {
+        keepLooping = inputSequence(emptyTrie);
+    }
+
     return 0;
 }
 
@@ -129,4 +139,73 @@ vector<string> loadDictionary(string fileName)
 
     // Return the string vector:
     return wordList;
+}
+
+/// @brief Prompts for a word prefix, then grabs input from the user.  If an
+/// input is given, search the current trie, displaying the number of results,
+/// then prompting to display the results.
+/// @param dictionaryTrie A Trie containing the dictionary to search through.
+/// @return If true, an input was given.  If false, no input was given.
+bool inputSequence(Trie *dictionaryTrie)
+{
+    // Prompt for a prefix:
+    cout << "Please enter a word prefix (or press enter to exit):  ";
+
+    // Allow empty input:
+    // https://stackoverflow.com/a/17871395
+    cin >> noskipws;
+
+    // Grab input:
+    string inputString;
+    cin >> inputString;
+    cin.clear();
+    cin.ignore();
+
+    // If the user gave an input:
+    if (inputString.size() > 0)
+    {
+        // Display search results:
+        cout << "There are " << dictionaryTrie->completeCount(inputString) << " completions for the prefix '" << inputString << "'.  Show completions? ";
+
+        // Grab input:
+        string boolInput;
+        cin >> boolInput;
+        cin.clear();
+        cin.ignore();
+        bool boolResult;
+
+        // Lazily convert the input string to a boolean value:
+        if (boolInput.compare("yes") == 0)
+        {
+            boolResult = true;
+        }
+        else
+        {
+            boolResult = false;
+        }
+
+        // If the user wants results:
+        if (boolResult)
+        {
+            // Print out the completions:
+            cout << "Completions" << endl
+                 << "-----------" << endl;
+
+            // Find all the words found:
+            vector<string> searchResults = dictionaryTrie->complete(inputString);
+            for (string s : searchResults)
+            {
+                // Print out the word:
+                cout << s << endl;
+            }
+        }
+
+        // Return true to loop again:
+        return true;
+    }
+    // Otherwise the user gave no input:
+    else
+    {
+        return false;
+    }
 }
