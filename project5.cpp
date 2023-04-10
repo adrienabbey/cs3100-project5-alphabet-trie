@@ -26,20 +26,6 @@ bool inputSequence(Trie *dictionaryTrie);
 
 int main()
 {
-    // Char test:
-    // char testChar = 'a';
-    // int charInt = testChar - 'a' + 1;
-    // cout << "Character " << testChar << "'s int value is: " << charInt << endl;
-
-    // Create an empty trie:
-    // Trie *testTrie = new Trie();
-
-    // Insert test:
-    // testTrie->insert("hello");
-
-    // Create an empty trie:
-    Trie *emptyTrie = new Trie();
-
     // Load the appropriate dictionary into a trie:
     vector<string> dictionary = loadDictionary("wordlist_linux.txt");
 
@@ -53,49 +39,13 @@ int main()
         alphaTrie->insert(word);
     }
 
-    // Test duplicate word insertion:
-    cout << "Duplicate insertion returns: " << alphaTrie->insert("cat") << endl;
-
-    // Test word and node counters:
-    cout << "Word count: " << alphaTrie->count() << endl
-         << "Node Count: " << alphaTrie->getSize() << endl;
-
-    // Test the find function:
-    cout << "Find cat returns: " << alphaTrie->find("cat") << endl
-         << "Find ca returns: " << alphaTrie->find("ca") << endl
-         << "Find foobar returns: " << alphaTrie->find("foobar") << endl;
-
-    // Test the complete function:
-    vector<string> findCatVector = alphaTrie->complete("cat");
-    for (string s : findCatVector)
-    {
-        cout << s << ", ";
-    }
-
-    // Test the completeCount function:
-    cout << endl
-         << endl
-         << "Number of words starting with cat: " << alphaTrie->completeCount("cat") << endl;
-
-    // Test the copy constructor:
-    Trie *copyConstructorTrie = new Trie(*alphaTrie);
-
-    // Test the TrieNode deconstructor:
-    delete alphaTrie;
-
-    // Test the =operator overload:
-    emptyTrie = copyConstructorTrie;
-
-    // Test the find function on the now-full emptyTrie:
-    cout << "Number of words starting with dog: " << emptyTrie->completeCount("dog") << endl
-         << endl;
-
     // Loop the user input sequence:
     bool keepLooping = true;
 
+    // Begin the main loop, prompting and grabbing input from the user:
     while (keepLooping)
     {
-        keepLooping = inputSequence(emptyTrie);
+        keepLooping = inputSequence(alphaTrie);
     }
 
     return 0;
